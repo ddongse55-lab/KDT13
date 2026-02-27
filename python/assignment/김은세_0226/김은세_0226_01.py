@@ -29,5 +29,5 @@ for dct in lst:
     print('%s  %s  %4d   %4d   %4d    %4d    %4.2f' %
         (dct['code'], dct['name'], dct['kor'], dct['eng'], dct['math'], dct['total'], dct['avg']))
 print('=================================================')
-print('\t\t\t학생수 : %d\t\t\t전체 평균 : %4.2f' % (total, total_avg/total))
+print('\t\t\t학생수 : %d\t\t\t전체 평균 : %5.2f' % (total, total_avg/total))
 print('=================================================')
