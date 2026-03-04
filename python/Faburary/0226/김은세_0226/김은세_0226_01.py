@@ -22,7 +22,6 @@ print('학번    이름    국어    영어    수학    총점    평균')
 print('=================================================')
 total = 0
 total_avg = 0
-
 for dct in lst:
     total += 1
     total_avg += dct['avg']

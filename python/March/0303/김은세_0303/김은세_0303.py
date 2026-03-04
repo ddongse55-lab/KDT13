@@ -43,7 +43,6 @@ def print_total_num():
 if __name__ == '__main__':
     x, y = input_num()
     min_num, max_num = min_max_num(x, y)
-
     print()
     print_prime_num(min_num, max_num)
     print_total_num()
