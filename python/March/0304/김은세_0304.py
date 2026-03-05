@@ -36,6 +36,7 @@ def input_sungjuk():
         wr = csv.DictWriter(fp, fieldnames=fieldnames)
     else:
         # 'sungjuk_data.csv'파일을 'add'모드로 열기
+        # 파일이 없을 때 단 한 번 실행하는 최초의 작업으로 파일을 'write' 모드로 작성해도 문제 없음
         fp = open('sungjuk_data.csv', 'a', encoding='utf-8', newline='')
         fieldnames = ['code', 'name', 'kor', 'eng', 'math', 'total', 'avg', 'grade']
         wr = csv.DictWriter(fp, fieldnames=fieldnames)
@@ -62,6 +63,7 @@ def print_sungjuk():
     if os.path.exists('sungjuk_data.csv'):
         # 'sungjuk_data.csv' 파일 'read' 모드로 열기
         fp = open('sungjuk_data.csv', 'r', encoding='utf-8', newline='')
+        # DictReader : 반복자 객체로 값을 반환 -> 한 번 값을 사용하고 나면 그 값이 사라짐
         lst = list(csv.DictReader(fp))
 
         print('\n%23s %s %-23s' % ('***', '성적표', '***'))
