@@ -58,11 +58,11 @@
     grade = property(get_grade, set_grade)
 
     def input_sungjuk(self):
-        self._code = input('\n학번 입력: ')
-        self._name = input('이름 입력: ')
-        self._kor = int(input('국어 점수 입력: '))
-        self._eng = int(input('영어 점수 입력: '))
-        self._math = int(input('수학 점수 입력: '))
+        self._code = input('\n학번을 입력하세요 => ')
+        self._name = input('이름을 입력하세요 => ')
+        self._kor = int(input('국어 점수를 입력하세요 => '))
+        self._eng = int(input('영어 점수를 입력하세요 => '))
+        self._math = int(input('수학 점수를 입력하세요 => '))
 
     def process_sungjuk(self):
         self._tot = self._kor + self._eng + self._math

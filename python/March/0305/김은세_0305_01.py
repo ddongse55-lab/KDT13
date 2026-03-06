@@ -40,6 +40,10 @@ def print_sungjuk():
 
 
 def search_sungjuk():
+    if len(lst) == 0:
+        print('\n※ 조회할 성적정보가 없습니다 ※')
+        return
+
     code = input('\n성적을 조회할 학생의 학번을 입력하세요 => ')
 
     for data in lst:
@@ -55,6 +59,10 @@ def search_sungjuk():
 
 
 def update_sungjuk():
+    if len(lst) == 0:
+        print('\n※ 수정할 성적정보가 없습니다 ※')
+        return
+
     code = input('\n성적을 수정할 학생의 학번을 입력하세요 => ')
 
     for data in lst:
@@ -71,6 +79,10 @@ def update_sungjuk():
 
 
 def delete_sungjuk():
+    if len(lst) == 0:
+        print('\n※ 삭제할 성적정보가 없습니다 ※')
+        return
+
     code = input('\n성적을 삭제할 학생의 학번을 입력하세요 => ')
 
     for data in lst:
