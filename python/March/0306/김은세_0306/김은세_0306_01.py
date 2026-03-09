@@ -2,7 +2,7 @@
 # print(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "test"))
 # sys.path.append(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "test"))
 
-from sungjuk_class import Sungjuk
+from 김은세_0306_02 import Sungjuk
 
 lst = []
 
@@ -34,7 +34,6 @@ def print_sungjuk():
   print("학번   이름   국어   영어  수학   총점   평균  등급")
   print("==============================================")
   tot_avg = 0
-  print(lst)
   for obj in lst:
     obj.output_sungjuk()
     tot_avg += obj.avg # obj.avg => obj.get_avg()

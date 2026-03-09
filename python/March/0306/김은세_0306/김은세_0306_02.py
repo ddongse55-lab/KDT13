@@ -1,4 +1,9 @@
-﻿class SyncValueError(Exception):
+﻿class BlankValueError(Exception):
+  def __init__(self):
+    super().__init__('공백 입력 불가')
+
+
+class SyncValueError(Exception):
   def __init__(self):
     super().__init__('동일한 학번이 이미 존재합니다.')
 
@@ -73,50 +78,58 @@ class Sungjuk:
   grade = property(get_grade, set_grade)
 
   def input_sungjuk(self, lst):
-    self._hakbun = input("학번 입력 => ")
-    try:
-      for data in lst:
-        if self._hakbun == data.hakbun:
-          raise SyncValueError
-    except SyncValueError as e:
-      print('\n%s\n성적 입력 실패!!\n' %e)
-    else:
-      self._irum = input("이름 입력 => ")
-      self.update_sungjuk()
+    while True:
+      try:
+        self._hakbun = input("학번 입력 => ")
+        if self._hakbun.strip() == "":
+          raise BlankValueError
+        else:
+          for data in lst:
+            if self._hakbun == data.hakbun:
+              raise SyncValueError
+
+        self._irum = input("이름 입력 => ")
+        if self._irum.strip() == "":
+          raise BlankValueError
+
+      except Exception as e:
+        print('\n%s\n성적 입력 실패!!\n' % e)
+      else:
+        self.update_sungjuk()
+        break
     # self._kor = int(input("국어 점수 입력 => "))
     # self._eng = int(input("영어 점수 입력 => "))
     # self._math = int(input("수학 점수 입력 => "))
 
   # 추가 수정
   def update_sungjuk(self):
-    try:
-        self._kor = int(input("국어 점수 입력 => "))
-        if self._kor > 100:
-          raise OverNumError
-        elif self._kor < 0:
-          raise NegativeNumError
+    while True:
+      try:
+          self._kor = int(input("국어 점수 입력 => "))
+          if self._kor > 100:
+            raise OverNumError
+          elif self._kor < 0:
+            raise NegativeNumError
 
-        self._eng = int(input("영어 점수 입력 => "))
-        if self._eng > 100:
-          raise OverNumError
-        elif self._eng < 0:
-          raise NegativeNumError
+          self._eng = int(input("영어 점수 입력 => "))
+          if self._eng > 100:
+            raise OverNumError
+          elif self._eng < 0:
+            raise NegativeNumError
 
-        self._math = int(input("수학 점수 입력 => "))
-        if self._math > 100:
-          raise OverNumError
-        elif self._math < 0:
-          raise NegativeNumError
+          self._math = int(input("수학 점수 입력 => "))
+          if self._math > 100:
+            raise OverNumError
+          elif self._math < 0:
+            raise NegativeNumError
 
-    except OverNumError as e:
-        print('%s \n성적 입력 실패!!\n' %e)
-    except NegativeNumError as e:
-        print('%s \n성적 입력 실패!!\n' %e)
-    except ValueError as e:
-        print('\n점수는 숫자만 입력 가능합니다.\n다시 입력해주세요\n(%s)\n' %e)
-
-    else:
-      print('\n성적 입력 성공!!\n')
+      except ValueError as e:
+          print('\n점수는 숫자만 입력 가능합니다.\n다시 입력해주세요\n(%s)\n' %e)
+      except Exception as e:
+          print('%s \n성적 입력 실패!!\n' %e)
+      else:
+        print('\n성적 입력 성공!!\n')
+        break
 
   def process_sungjuk(self ):
     self._tot = self._kor + self._eng + self._math
@@ -133,7 +146,7 @@ class Sungjuk:
       self._grade = "가"
 
   def output_sungjuk(self):
-    print("%4s %3s %4d  %4d  %4d  %4d  %5.2f  %2s" %
+    print("%4s %4s %4d  %4d  %4d  %4d  %5.2f  %2s" %
           (self._hakbun, self._irum, self._kor, self._eng, self._math,
            self._tot, self._avg, self._grade))
 
